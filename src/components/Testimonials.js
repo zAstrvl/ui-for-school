@@ -1,18 +1,19 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
 import Axios from "axios";
+import { apiUrl } from "../constants";
 // Testimonials Component
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   const fetchTestimonials = async () => {
-    Axios.get("https://localhost:7294/api/testimonials")
-    .then((res) => {
-      console.log("API Response:", res.data);
-      setTestimonials(res.data);
-    })
-    .catch((err) => {
-      console.error("API Error:", err);
-    });
+    Axios.get(`${apiUrl}/api/testimonials`)
+      .then((res) => {
+        console.log("API Response:", res.data);
+        setTestimonials(res.data);
+      })
+      .catch((err) => {
+        console.error("API Error:", err);
+      });
   };
   useEffect(() => {
     fetchTestimonials();
@@ -29,6 +30,5 @@ const Testimonials = () => {
     </section>
   );
 };
-
 
 export default Testimonials;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
+import { apiUrl } from "../constants";
 
 // Contact Us Component
 const ContactUs = () => {
@@ -21,7 +22,7 @@ const ContactUs = () => {
     console.log("Form data:", form);
 
     try {
-      const res = await Axios.post("https://localhost:7294/api/mail", form);
+      const res = await Axios.post(`${apiUrl}/api/mail`, form);
       console.log("Form submitted successfully:", res.data);
       setForm({ name: "", email: "", message: "" });
       alert("Thank you for contacting us! We will get back to you soon.");
